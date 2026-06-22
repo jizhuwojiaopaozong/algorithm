@@ -1,5 +1,5 @@
 from typing import List
-
+from collections import defaultdict
 
 class Solution:
     ## 暴力枚举
@@ -13,34 +13,45 @@ class Solution:
     
     ## 哈希表
     def twoSum_2(self, nums: List[int], target: int) -> List[int]:
-        if not nums or len(nums) < 2:
-            return [-1, -1]
-        d = {}
-        for i, num in enumerate(nums):
-            remain = target - num
-            if remain in d:
-                return [d[remain], i]
-            d[num] = i
+        d = defaultdict(int)
+        for i in range(len(nums)):
+            tmp = target - nums[i]
+            if tmp in d:
+                return [d[tmp], i]
+            d[nums[i]] = i
         return [-1, -1]
-
     
     ## 两数之和 变形题（数组有重复数字，需要输出所有符合要求的数字对）（https://juejin.cn/post/7337225888265338934）
     ## 输入：[3, 3, 3, 4, 2, 3], 6
     ## 输出：[[3, 3], [3, 3], [3, 3], [4, 2], [3, 3], [3, 3], [3, 3]]
     def twoSum(self, nums: List[int], target: int) -> List[List[int]]:
         res = []
-        d = {}
-        for i, num in enumerate(nums):
-            remain = target - num
-            if remain in d:
-                for ii in d[remain]:
-                    res.append([nums[ii], num])
-            if num in d:
-                d[num].append(i)
+        d = defaultdict(list)
+        for i in range(len(nums)):
+            tmp = target - nums[i]
+            if tmp in d:
+                for ii in d[tmp]:
+                    res.append([nums[ii], nums[i]])
+            if nums[i] in d:
+                d[nums[i]].append(i)
             else:
-                d[num] = [i]
-        return res     
+                d[nums[i]] = [i]
+        return res
 
+    def twoSum_3(self, nums: List[int], target: int) -> List[List[int]]:
+        # 2, 3, 3, 3, 3, 4
+        nums.sort()
+        res = []
+        i = 0
+        j = len(nums) - 1
+        while i < j:
+            while i < j - 1 and nums[i] + nums[j-1] >= target:
+                j -= 1
+            if nums[i] + nums[j] == target:
+                res.append([nums[i], nums[j]])
+            i += 1
+        return res
     
 solution = Solution()
-print(solution.twoSum([3, 3, 3, 4, 2, 3], 6))
+print(solution.twoSum_3([3, 3, 3, 4, 2, 3], 6))
+# print(solution.twoSum_1([3, 2, 4], 6))
