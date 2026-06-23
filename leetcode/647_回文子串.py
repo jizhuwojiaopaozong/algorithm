@@ -22,7 +22,32 @@ class Solution:
                 n += 1
         return res
 
+    def countSubstrings_2(self, s: str) -> list:
+        res = []
+        for i in range(len(s)):
+            m = i
+            n = i
+            while m >= 0 and n <= len(s) - 1:
+                if s[m] == s[n]:
+                    res.append(s[m : n + 1])
+                else:
+                    break
+                m -= 1
+                n += 1
+            m = i
+            n = i + 1
+            while m >= 0 and n <= len(s) - 1:
+                if s[m] == s[n]:
+                    res.append(s[m : n + 1])
+                else:
+                    break
+                m -= 1
+                n += 1
+        return res
+
+
 solution = Solution()
 # print(solution.countSubstrings("abc"))
-print(solution.countSubstrings("aaa"))
-
+# print(solution.countSubstrings("aaa"))
+# print(solution.countSubstrings_2("abc"))
+print(solution.countSubstrings_2("aaa"))
