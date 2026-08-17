@@ -19,6 +19,18 @@ class Solution:
                 p.next = q
         return dummy.next
 
+    def deleteDuplicates_digui(self, head:ListNode)->ListNode:
+        if not head or not head.next:
+            return head
+        if head.val != head.next.val:
+            head.next = self.deleteDuplicates_digui(head.next)
+            return head
+        else:
+            cur = head.next
+            while cur and cur.val == head.val:
+                cur = cur.next
+            return self.deleteDuplicates_digui(cur)
+
     def createListNode(self, nums) -> ListNode:
         if len(nums) == 0:
             return None
