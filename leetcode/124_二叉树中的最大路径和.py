@@ -37,6 +37,21 @@ class Solution:
         dfs(root)
         return ans, path
 
+    def maxPathSum1(self, root: TreeNode) -> int:
+        res = float('-inf')
+
+        def dfs(root):
+            nonlocal res
+            if not root:
+                return 0
+            left = max(0, dfs(root.left))
+            right = max(0, dfs(root.right))
+            res = max(res, root.val + left + right)
+            return root.val + max(left, right)
+
+        dfs(root)
+        return res
+
     def createtreeNode(self, nums):
         if not nums or len(nums) == 0:
             return None
