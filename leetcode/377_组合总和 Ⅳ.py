@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # 完全背包求排列问题
     def combinationSum4(self, nums: List[int], target: int) -> int:
         f = [0] * (target + 1)
         f[0] = 1
@@ -10,6 +11,7 @@ class Solution:
                 if i >= num:
                     f[i] += f[i - num]
         return f[target]
+
 
 solution = Solution()
 print(solution.combinationSum4([1, 2, 3], 4))
