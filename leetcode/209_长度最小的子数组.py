@@ -27,11 +27,11 @@ class Solution:
             while sum - nums[j] >= target:
                 sum -= nums[j]
                 j += 1
-            if sum >= target:
-                res = min(res, i - j + 1)
+            if sum >= target and i - j + 1 < res:
+                res = i - j + 1
                 tmp = i
             i += 1
-        if res == 2 ** 31 - 1:
+        if res == 2**31 - 1:
             return []
         return nums[tmp - res + 1 : tmp + 1]
 
@@ -39,4 +39,4 @@ class Solution:
 solution = Solution()
 # print(solution.minSubArrayLen_2(7, [2,3,1,2,4,3]))
 # print(solution.minSubArrayLen_2(4, [1,4,4]))
-print(solution.minSubArrayLen_2(11, [1, 1, 1, 1, 1, 1, 1, 1]))
+print(solution.minSubArrayLen_2(4, [1, 1, 1, 1, 1, 1, 1, 1]))
