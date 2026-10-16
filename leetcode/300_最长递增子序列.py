@@ -65,10 +65,11 @@ class Solution:
 # 它用不保持原顺序的最小结尾值来换取了高效的 O(n log n) 长度计算。只要记住 res 只是一个“长度相等的占位符”而不是真实序列，就不会被它的内容迷惑了。
 
 solution = Solution()
-print(solution.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
-print(solution.lengthOfLIS([0, 1, 0, 3, 2, 3]))
-print(solution.lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))
-print(solution.lengthOfLIS_1([10, 9, 2, 5, 3, 7, 101, 18]))
-print(solution.lengthOfLIS_1([0, 1, 0, 3, 2, 3]))
-print(solution.lengthOfLIS_1([7, 7, 7, 7, 7, 7, 7]))
-print(solution.lengthOfLIS_1([0, 1, 2, 3, -1]))
+# print(solution.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))
+# print(solution.lengthOfLIS([0, 1, 0, 3, 2, 3]))
+# print(solution.lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))
+# print(solution.lengthOfLIS_1([10, 9, 2, 5, 3, 7, 101, 18]))
+# print(solution.lengthOfLIS_1([0, 1, 0, 3, 2, 3]))
+# print(solution.lengthOfLIS_1([7, 7, 7, 7, 7, 7, 7]))
+# print(solution.lengthOfLIS_1([0, 1, 2, 3, -1]))
+print(solution.lengthOfLIS_1([2, 3, 1]))
